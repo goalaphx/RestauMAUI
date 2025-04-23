@@ -55,7 +55,7 @@
     <ScrollView>
          <VerticalStackLayout Spacing="10" Padding="30,0" VerticalOptions="Center">
 
-            <Label Text="Welcome Back!" Style="{StaticResource LoginTitleStyle}" SemanticProperties.HeadingLevel="Level1"/>
+            <Label Text="Welcome to RestoBesto" Style="{StaticResource LoginTitleStyle}" SemanticProperties.HeadingLevel="Level1"/>
 
             <Entry Placeholder="Username"
                    Text="{Binding Username}"
