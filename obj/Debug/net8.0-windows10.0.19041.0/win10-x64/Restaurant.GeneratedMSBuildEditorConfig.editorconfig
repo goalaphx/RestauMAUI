@@ -1,0 +1,132 @@
+is_global = true
+build_property.TargetFramework = net8.0-windows10.0.19041.0
+build_property.TargetFramework = net8.0-windows10.0.19041.0
+build_property.TargetPlatformMinVersion = 10.0.17763.0
+build_property.TargetPlatformMinVersion = 10.0.17763.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 9A19103F-16F7-4668-BE54-9A1E7A4F7556
+build_property.ProjectTypeGuids = 9A19103F-16F7-4668-BE54-9A1E7A4F7556
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
+build_property._MvvmToolkitIsUsingWindowsRuntimePack = true
+build_property.CsWinRTComponent = 
+build_property.CsWinRTAotOptimizerEnabled = true
+build_property.CsWinRTAotOptimizerEnabled = true
+build_property.CsWinRTAotWarningLevel = 
+build_property.CsWinRTAotWarningLevel = 
+build_property.RootNamespace = Restaurant
+build_property.ProjectDir = C:\Users\dell\RiderProjects\Restaurant\Restaurant\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTAotExportsEnabled = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptIn = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptOut = 
+build_property.CsWinRTCcwLookupTableGeneratorEnabled = true
+build_property.CsWinRTMergeReferencedActivationFactories = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/AllOrdersPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.AllOrdersPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AllOrdersPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AllOrdersPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/AllReservationsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.AllReservationsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AllReservationsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AllReservationsPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/CartPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.CartPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CartPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CartPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/ManageMenuPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.ManageMenuPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ManageMenuPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ManageMenuPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/MenuPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.MenuPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MenuPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MenuPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/MyReservationsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.MyReservationsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MyReservationsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MyReservationsPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/OrderPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.OrderPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\OrderPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\OrderPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/ProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.ProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ProfilePage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/ReservationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.ReservationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ReservationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ReservationPage.xaml
+
+[C:/Users/dell/RiderProjects/Restaurant/Restaurant/Views/StatsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Restaurant.Views.StatsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\StatsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\StatsPage.xaml

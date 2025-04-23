@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- ========== Base Element Styles (Implicit) ========== -->
+    <Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{StaticResource PrimaryColor}" />
+    </Style>
+
+    <!-- ========== Page Styles ========== -->
+    <Style x:Key="PageTitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="Large" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="0,10,0,15" />
+    </Style>
+
+    <!-- ========== List Item Styles ========== -->
+    <Style x:Key="ListItemBorderStyle" TargetType="Border">
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="Margin" Value="10,0,10,10" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+        <Setter Property="Stroke" Value="{StaticResource BorderColor}" />
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}"/>
+        <Setter Property="Shadow">
+            <Shadow Brush="#DDDDDD" Offset="5,5" Radius="10" Opacity="0.3" />
+        </Setter>
+    </Style>
+
+    <Style x:Key="SelectableListItemBorderStyle" TargetType="Border" BasedOn="{StaticResource ListItemBorderStyle}">
+         <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                     <VisualState x:Name="Normal" />
+                     <VisualState x:Name="Selected">
+                         <VisualState.Setters>
+                             <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                              <!-- REMOVED TargetName setters - these cause errors from global styles -->
+                         </VisualState.Setters>
+                     </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+         </Setter>
+     </Style>
+
+    <Style x:Key="PrimaryInfoStyle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+     <Style x:Key="SecondaryInfoStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+     <Style x:Key="StatusLabelStyle" TargetType="Label">
+         <Setter Property="FontSize" Value="Small"/>
+         <Setter Property="FontAttributes" Value="Bold"/>
+         <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+         <Setter Property="VerticalOptions" Value="Center"/>
+     </Style>
+
+     <Style x:Key="TotalAmountStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource SuccessColor}" />
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="EmptyListLabelStyle" TargetType="Label">
+         <Setter Property="HorizontalOptions" Value="Center"/>
+         <Setter Property="VerticalOptions" Value="Center"/>
+         <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+         <Setter Property="Margin" Value="20"/>
+         <Setter Property="HorizontalTextAlignment" Value="Center"/>
+     </Style>
+
+    <!-- ========== Button Styles ========== -->
+    <Style x:Key="ActionButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryTextColorLight}" />
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Padding" Value="15,0"/>
+    </Style>
+
+    <Style x:Key="PrimaryActionButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+        <Setter Property="TextTransform" Value="Uppercase"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HeightRequest" Value="55" />
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="CornerRadius" Value="28"/>
+    </Style>
+
+    <Style x:Key="FloatingActionButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="Large" />
+        <Setter Property="TextColor" Value="{StaticResource PrimaryTextColorLight}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+        <Setter Property="CornerRadius" Value="28" />
+        <Setter Property="HeightRequest" Value="56" />
+        <Setter Property="WidthRequest" Value="56" />
+        <Setter Property="Margin" Value="0,0,20,20" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="VerticalOptions" Value="End" />
+        <Setter Property="Shadow">
+             <Shadow Brush="Black" Offset="5,5" Radius="10" Opacity="0.6" />
+        </Setter>
+    </Style>
+
+    <Style x:Key="QuantityButtonStyle" TargetType="Button">
+        <Setter Property="WidthRequest" Value="40"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="BorderColor" Value="{StaticResource AccentColor}"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+     <Style x:Key="RemoveButtonStyle" TargetType="Button" BasedOn="{StaticResource QuantityButtonStyle}">
+          <Setter Property="TextColor" Value="{StaticResource DangerColor}"/>
+          <Setter Property="BorderColor" Value="{StaticResource DangerColor}"/>
+          <Setter Property="Text" Value="-"/>
+     </Style>
+
+    <Style x:Key="EditButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="60"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+     </Style>
+
+     <Style x:Key="DeleteButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{StaticResource DangerColor}"/>
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="BorderColor" Value="{StaticResource DangerColor}"/>
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="60"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+     </Style>
+
+    <Style x:Key="SaveButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryActionButtonStyle}">
+         <Setter Property="Margin" Value="0"/>
+         <Setter Property="HeightRequest" Value="45"/>
+         <Setter Property="CornerRadius" Value="23"/>
+    </Style>
+
+    <Style x:Key="CancelButtonStyle" TargetType="Button" BasedOn="{StaticResource SaveButtonStyle}">
+         <Setter Property="BackgroundColor" Value="{StaticResource SecondaryTextColor}"/>
+         <Setter Property="TextColor" Value="White"/>
+    </Style>
+
+    <Style x:Key="LogoutButtonStyle" TargetType="Button">
+         <Setter Property="BackgroundColor" Value="{StaticResource DangerColor}" />
+         <Setter Property="TextColor" Value="{StaticResource DangerTextColorLight}"/>
+         <Setter Property="FontAttributes" Value="Bold"/>
+         <Setter Property="HeightRequest" Value="50"/>
+         <Setter Property="CornerRadius" Value="25"/>
+         <Setter Property="FontSize" Value="Medium"/>
+         <Setter Property="Margin" Value="15,30,15,15"/>
+         <Setter Property="VerticalOptions" Value="End"/>
+         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+    </Style>
+    
+    <!-- Add these inside the <ResourceDictionary> in your Resources/Styles/Styles.xaml -->
+
+    <!-- Style for Form Page Titles (e.g., "Reserve Your Table") -->
+    <Style x:Key="FormPageTitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="Title"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0,10,0,20"/>
+    </Style>
+
+    <!-- Style for Stepper Value Label (Shows the number next to a Stepper) -->
+    <Style x:Key="StepperValueLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="Margin" Value="10,0,0,0"/> <!-- Space between stepper and label -->
+    </Style>
+
+    <!-- ========== Form Styles ========== -->
+    <Style x:Key="FormLabelStyle" TargetType="Label">
+         <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+         <Setter Property="VerticalOptions" Value="Center"/>
+         <Setter Property="FontAttributes" Value="Bold"/>
+         <Setter Property="Margin" Value="0,0,0,5"/>
+    </Style>
+
+    <Style TargetType="Entry">
+         <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+         <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+         <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}" />
+         <Setter Property="HeightRequest" Value="45" />
+         <Setter Property="FontSize" Value="Small" />
+         <Setter Property="Margin" Value="0,0,0,5" />
+         <!-- REMOVED BorderColor / CornerRadius -->
+    </Style>
+
+    <Style TargetType="Editor">
+         <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+         <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+         <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}" />
+         <Setter Property="HeightRequest" Value="80" />
+         <Setter Property="FontSize" Value="Small" />
+         <Setter Property="Margin" Value="0,0,0,5" />
+         <Setter Property="AutoSize" Value="Disabled"/>
+         <!-- REMOVED BorderColor / CornerRadius -->
+    </Style>
+
+    <Style TargetType="DatePicker">
+         <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+         <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+         <Setter Property="HeightRequest" Value="45" />
+         <Setter Property="FontSize" Value="Small" />
+         <Setter Property="Margin" Value="0,0,0,5" />
+          <!-- REMOVED BorderColor / CornerRadius -->
+    </Style>
+
+    <Style TargetType="TimePicker">
+         <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+         <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+         <Setter Property="HeightRequest" Value="45" />
+         <Setter Property="FontSize" Value="Small" />
+         <Setter Property="Margin" Value="0,0,0,5" />
+          <!-- REMOVED BorderColor / CornerRadius -->
+    </Style>
+
+    <Style TargetType="Picker">
+         <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+         <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+         <Setter Property="TitleColor" Value="{StaticResource SecondaryTextColor}" />
+         <Setter Property="HeightRequest" Value="45" />
+         <Setter Property="FontSize" Value="Small" />
+         <Setter Property="Margin" Value="0,0,0,5" />
+          <!-- REMOVED BorderColor / CornerRadius -->
+    </Style>
+
+    <Style x:Key="ErrorLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource DangerColor}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="0,5,0,15" />
+        <Setter Property="FontSize" Value="Small"/>
+    </Style>
+
+    <!-- ========== Stats Page Styles ========== -->
+    <Style x:Key="StatBlockBorderStyle" TargetType="Border">
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Margin" Value="10,0,10,15"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 10"/>
+        <Setter Property="Stroke" Value="{StaticResource BorderColor}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}"/>
+        <Setter Property="Shadow">
+           <Shadow Brush="#DDDDDD" Offset="5,5" Radius="10" Opacity="0.3" />
+       </Setter>
+    </Style>
+
+    <Style x:Key="StatDescriptionLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,0,5"/>
+    </Style>
+
+    <Style x:Key="StatValueLabelStyle" TargetType="Label">
+         <Setter Property="FontSize" Value="Title"/>
+         <Setter Property="FontAttributes" Value="Bold"/>
+         <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+         <Setter Property="HorizontalOptions" Value="Center"/>
+         <Setter Property="Margin" Value="0,0,0,5"/>
+    </Style>
+
+     <Style x:Key="RevenueValueLabelStyle" TargetType="Label" BasedOn="{StaticResource StatValueLabelStyle}">
+         <Setter Property="TextColor" Value="{StaticResource SuccessColor}"/>
+    </Style>
+
+     <Style x:Key="PendingValueLabelStyle" TargetType="Label" BasedOn="{StaticResource StatValueLabelStyle}">
+         <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+    </Style>
+
+
+</ResourceDictionary>

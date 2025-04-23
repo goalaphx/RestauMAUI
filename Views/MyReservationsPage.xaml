@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:model="clr-namespace:Restaurant.Models"
+             x:Class="Restaurant.Views.MyReservationsPage"
+             x:DataType="viewmodel:MyReservationsViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Assuming common styles like PageTitleStyle, ListItemBorderStyle, -->
+            <!-- PrimaryInfoStyle, SecondaryInfoStyle, StatusLabelStyle, EmptyListLabelStyle -->
+            <!-- are defined in App.xaml or a merged dictionary -->
+
+             <!-- You can add page-specific styles here if needed -->
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" RowSpacing="0">
+        <Label Text="My Reservations" Style="{StaticResource PageTitleStyle}" Grid.Row="0" SemanticProperties.HeadingLevel="Level1"/>
+
+        <RefreshView Grid.Row="1" Command="{Binding LoadReservationsCommand}" IsRefreshing="{Binding IsBusy}">
+             <CollectionView ItemsSource="{Binding Reservations}" SelectionMode="None">
+                 <CollectionView.ItemTemplate>
+                     <DataTemplate x:DataType="model:Reservation">
+                         <!-- Use Border for consistent styling -->
+                         <Border Style="{StaticResource ListItemBorderStyle}">
+                             <VerticalStackLayout Spacing="4">
+                                 <!-- Using styles for consistency -->
+                                 <Label Text="{Binding ReservationTime, StringFormat='{0:g}'}" Style="{StaticResource PrimaryInfoStyle}"/>
+                                 <Label Text="{Binding PartySize, StringFormat='Party of {0}'}" Style="{StaticResource SecondaryInfoStyle}"/>
+                                 <Label Text="{Binding Status}" Style="{StaticResource StatusLabelStyle}"/>
+                                 <!-- Add CustomerName/Phone if needed, using SecondaryInfoStyle -->
+                                 <!-- <Label Text="{Binding CustomerName}" Style="{StaticResource SecondaryInfoStyle}"/> -->
+                             </VerticalStackLayout>
+                         </Border>
+                     </DataTemplate>
+                 </CollectionView.ItemTemplate>
+                   <CollectionView.EmptyView>
+                        <Label Text="You have no upcoming reservations." Style="{StaticResource EmptyListLabelStyle}"/>
+                   </CollectionView.EmptyView>
+             </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"
+                           Color="{StaticResource PrimaryColor}"/>
+    </Grid>
+</ContentPage>

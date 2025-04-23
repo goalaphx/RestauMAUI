@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:converters="clr-namespace:Restaurant.Converters"
+             x:Class="Restaurant.Views.LoginPage"
+             x:DataType="viewmodel:LoginViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IsNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter" />
+
+            <!-- Styles specific to Login Page or Forms -->
+            <Style x:Key="LoginTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Header" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,60,0,40" /> <!-- Increased top margin -->
+            </Style>
+
+            <Style x:Key="FormEntryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="0,0,0,10" /> <!-- Add margin below each entry -->
+                 <!-- Consider adding a border or changing background on focus -->
+            </Style>
+
+            <Style x:Key="ErrorLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource DangerColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,5,0,15" />
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <Style x:Key="PrimaryActionButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+                <!-- Inherits base style, can override properties -->
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Margin" Value="0,20,0,0" />
+                <Setter Property="CornerRadius" Value="28"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Use VerticalStackLayout for simpler form layout -->
+    <ScrollView>
+         <VerticalStackLayout Spacing="10" Padding="30,0" VerticalOptions="Center">
+
+            <Label Text="Welcome Back!" Style="{StaticResource LoginTitleStyle}" SemanticProperties.HeadingLevel="Level1"/>
+
+            <Entry Placeholder="Username"
+                   Text="{Binding Username}"
+                   Keyboard="Email"
+                   ReturnType="Next"
+                   Style="{StaticResource FormEntryStyle}"/>
+
+            <Entry Placeholder="Password"
+                   Text="{Binding Password}"
+                   IsPassword="True"
+                   ReturnType="Done"
+                   Style="{StaticResource FormEntryStyle}"/>
+
+            <Label Text="{Binding LoginError}"
+                   IsVisible="{Binding LoginError, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+                   Style="{StaticResource ErrorLabelStyle}" />
+
+            <Button Text="Login"
+                    Command="{Binding LoginAsyncCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Style="{StaticResource PrimaryActionButtonStyle}"/>
+
+            <!-- Optional: Add links for "Forgot Password?" or "Sign Up" here -->
+            <!-- <Label Text="Forgot Password?" TextColor="{StaticResource PrimaryColor}" HorizontalOptions="Center" Margin="0,15,0,0"> -->
+                <!-- Add TapGestureRecognizer -->
+            <!-- </Label> -->
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="Center" VerticalOptions="Center"
+                               Color="{StaticResource PrimaryColor}"
+                               Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

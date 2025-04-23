@@ -1,0 +1,56 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:viewmodel="clr-namespace:Restaurant.ViewModels" 
+xmlns:model="clr-namespace:Restaurant.Models"       
+x:Class="Restaurant.Views.CartPage"
+x:DataType="viewmodel:CartViewModel"
+Title="{Binding Title}">
+
+<Grid RowDefinitions="*, Auto, Auto" Padding="10">
+
+    <CollectionView ItemsSource="{Binding CartItems}" Grid.Row="0" SelectionMode="None">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:CartItem">
+                <Frame Padding="10" Margin="5,0,5,10" CornerRadius="5" BorderColor="LightGray">
+                    <Grid ColumnDefinitions="*, Auto, Auto, Auto">
+                        <StackLayout Grid.Column="0" VerticalOptions="Center">
+                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Price, StringFormat='Unit Price: {0:C}'}" FontSize="Small"/>
+                            <Label Text="{Binding TotalPrice, StringFormat='Total: {0:C}'}" FontSize="Small" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <Label Grid.Column="1" Text="{Binding Quantity, StringFormat='Qty: {0}'}" VerticalOptions="Center" Margin="10,0"/>
+                        <!-- Add/Remove Buttons could go here, or use SwipeView -->
+                         <Button Text="-" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="40" HeightRequest="40" CornerRadius="20"
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CartViewModel}}, Path=RemoveItemCommand}"
+                                 CommandParameter="{Binding .}"/>
+                          <!-- Add Button (if allowing increase from cart) -->
+                         <!-- <Button Text="+" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="40" HeightRequest="40" CornerRadius="20"
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CartViewModel}}, Path=AddItemCommand}"
+                                 CommandParameter="{Binding .}"/> --> <!-- Needs adjustment in AddItem to take CartItem -->
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.EmptyView>
+             <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+                  <Label Text="Your cart is empty." FontSize="Medium" HorizontalTextAlignment="Center"/>
+                  <Label Text="Add items from the menu!" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Gray"/>
+             </StackLayout>
+        </CollectionView.EmptyView>
+    </CollectionView>
+
+    <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Padding="10" BackgroundColor="LightGray">
+        <Label Text="Total:" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center"/>
+        <Label Grid.Column="1" Text="{Binding CartTotal, StringFormat='{0:C}'}" FontSize="Large" FontAttributes="Bold" TextColor="Green" VerticalOptions="Center"/>
+    </Grid>
+
+    <!-- CORRECTED BUTTON: Removed the IsEnabled binding -->
+    <Button Grid.Row="2" Text="Place Order"
+            Command="{Binding PlaceOrderCommand}"
+            Margin="10" HeightRequest="50" FontSize="Large"/>
+
+     <ActivityIndicator Grid.RowSpan="3"
+                       IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+</Grid>
+</ContentPage>

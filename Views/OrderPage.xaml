@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:model="clr-namespace:Restaurant.Models"
+             x:Class="Restaurant.Views.OrderPage"
+             x:DataType="viewmodel:OrderViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Style for selected item feedback -->
+            <!-- NOTE: Removed TargetName setters to fix XamlC error -->
+             <Style TargetType="Border" x:Key="SelectableListItemBorderStyle" BasedOn="{StaticResource ListItemBorderStyle}">
+                 <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                             <VisualState x:Name="Normal" />
+                             <VisualState x:Name="Selected">
+                                 <VisualState.Setters>
+                                     <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                                      <!-- TargetName setters removed -->
+                                      <!-- <Setter TargetName="OrderNumberLabel.TextColor" Value="White" /> -->
+                                      <!-- <Setter TargetName="OrderDateLabel.TextColor" Value="WhiteSmoke" /> -->
+                                      <!-- <Setter TargetName="StatusLabel.TextColor" Value="WhiteSmoke" /> -->
+                                      <!-- <Setter TargetName="TotalAmountLabel.TextColor" Value="White" /> -->
+                                 </VisualState.Setters>
+                             </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                 </Setter>
+             </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" RowSpacing="0">
+        <Label Text="Order History" Style="{StaticResource PageTitleStyle}" Grid.Row="0" SemanticProperties.HeadingLevel="Level1"/>
+
+        <RefreshView Grid.Row="1" Command="{Binding LoadOrdersCommand}" IsRefreshing="{Binding IsBusy}">
+             <CollectionView ItemsSource="{Binding PastOrders}"
+                             SelectionMode="Single"
+                             SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
+                             SelectionChangedCommand="{Binding ViewOrderDetailsCommand}">
+
+                 <CollectionView.ItemTemplate>
+                     <DataTemplate x:DataType="model:Order">
+                         <!-- This Border now uses the corrected local style -->
+                         <Border Style="{StaticResource SelectableListItemBorderStyle}">
+                             <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                                 <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                     <!-- Names are kept in case needed for other logic, but VSM won't target them from style -->
+                                     <Label x:Name="OrderNumberLabel" Style="{StaticResource PrimaryInfoStyle}">
+                                         <Label.FormattedText>
+                                             <FormattedString>
+                                                 <Span Text="Order #"/>
+                                                 <Span Text="{Binding Id}"/>
+                                             </FormattedString>
+                                         </Label.FormattedText>
+                                     </Label>
+                                     <Label x:Name="OrderDateLabel" Text="{Binding OrderDate, StringFormat='{0:g}'}" Style="{StaticResource SecondaryInfoStyle}"/>
+                                     <Label x:Name="StatusLabel" Text="{Binding Status}" Style="{StaticResource StatusLabelStyle}"/>
+                                 </VerticalStackLayout>
+                                 <Label x:Name="TotalAmountLabel" Grid.Column="1" Text="{Binding TotalAmount, StringFormat='{0:C}'}" Style="{StaticResource TotalAmountStyle}" VerticalOptions="Center"/>
+                             </Grid>
+                         </Border>
+                     </DataTemplate>
+                 </CollectionView.ItemTemplate>
+                   <CollectionView.EmptyView>
+                        <Label Text="You haven't placed any orders yet." Style="{StaticResource EmptyListLabelStyle}"/>
+                   </CollectionView.EmptyView>
+             </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"/>
+                           <!-- ActivityIndicator implicitly uses PrimaryColor from global style -->
+    </Grid>
+</ContentPage>

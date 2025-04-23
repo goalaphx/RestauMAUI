@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             x:Class="Restaurant.Views.StatsPage"
+             x:DataType="viewmodel:StatsViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="StatBlockBorderStyle" TargetType="Border">
+                <Setter Property="Padding" Value="20"/>
+                <Setter Property="Margin" Value="10,0,10,15"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 10"/>
+                <Setter Property="Stroke" Value="{StaticResource BorderColor}"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}"/>
+                <Setter Property="Shadow">
+                   <Shadow Brush="#DDDDDD" Offset="5,5" Radius="10" Opacity="0.3" />
+               </Setter>
+            </Style>
+
+            <Style x:Key="StatDescriptionLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
+            </Style>
+
+            <Style x:Key="StatValueLabelStyle" TargetType="Label">
+                 <Setter Property="FontSize" Value="Title"/>
+                 <Setter Property="FontAttributes" Value="Bold"/>
+                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                 <Setter Property="HorizontalOptions" Value="Center"/>
+                 <Setter Property="Margin" Value="0,0,0,5"/>
+            </Style>
+
+             <Style x:Key="RevenueValueLabelStyle" TargetType="Label" BasedOn="{StaticResource StatValueLabelStyle}">
+                 <Setter Property="TextColor" Value="{StaticResource SuccessColor}"/>
+            </Style>
+
+             <Style x:Key="PendingValueLabelStyle" TargetType="Label" BasedOn="{StaticResource StatValueLabelStyle}">
+                 <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" RowSpacing="0">
+
+        <Label Grid.Row="0" Text="Restaurant Statistics" Style="{StaticResource PageTitleStyle}" SemanticProperties.HeadingLevel="Level1"/>
+
+        <RefreshView Grid.Row="1" Command="{Binding LoadStatsCommand}" IsRefreshing="{Binding IsBusy}">
+             <VerticalStackLayout Spacing="0" Padding="10,10,10,0">
+
+                 <Border Style="{StaticResource StatBlockBorderStyle}">
+                     <VerticalStackLayout Spacing="5">
+                         <Label Text="Total Clients Registered" Style="{StaticResource StatDescriptionLabelStyle}"/>
+                         <Label Text="{Binding TotalClients}" Style="{StaticResource StatValueLabelStyle}"/>
+                     </VerticalStackLayout>
+                 </Border>
+
+                 <Border Style="{StaticResource StatBlockBorderStyle}">
+                     <VerticalStackLayout Spacing="5">
+                         <Label Text="Total Revenue (Paid/Delivered)" Style="{StaticResource StatDescriptionLabelStyle}"/>
+                         <Label Text="{Binding TotalRevenue, StringFormat='{0:C}'}" Style="{StaticResource RevenueValueLabelStyle}"/>
+                     </VerticalStackLayout>
+                 </Border>
+
+                  <Border Style="{StaticResource StatBlockBorderStyle}">
+                     <VerticalStackLayout Spacing="5">
+                         <Label Text="Pending Reservations" Style="{StaticResource StatDescriptionLabelStyle}"/>
+                         <Label Text="{Binding PendingReservations}" Style="{StaticResource PendingValueLabelStyle}"/>
+                     </VerticalStackLayout>
+                 </Border>
+
+                 <!-- Add more statistic blocks here if needed -->
+
+             </VerticalStackLayout>
+        </RefreshView>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"
+                           Color="{StaticResource PrimaryColor}"/>
+
+    </Grid>
+</ContentPage>

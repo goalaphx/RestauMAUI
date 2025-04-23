@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Core Theme Colors -->
+    <Color x:Key="PrimaryColor">#007AFF</Color>         <!-- Example: Blue -->
+    <Color x:Key="AccentColor">#FF9500</Color>          <!-- Example: Orange -->
+    <Color x:Key="SuccessColor">#34C759</Color>         <!-- Example: Green -->
+    <Color x:Key="DangerColor">#FF3B30</Color>          <!-- Example: Red -->
+    <Color x:Key="WarningColor">#FFCC00</Color>         <!-- Example: Yellow (Often same as Accent) -->
+
+    <!-- Background Colors -->
+    <Color x:Key="PageBackgroundColor">#F2F2F7</Color>    <!-- Example: Very Light Gray -->
+    <Color x:Key="ItemBackgroundColor">White</Color>
+    <Color x:Key="TotalBackgroundColor">#E5E5EA</Color>  <!-- Example: Slightly darker gray for totals -->
+
+    <!-- Text Colors -->
+    <Color x:Key="TextColor">#1C1C1E</Color>             <!-- Dark Text -->
+    <Color x:Key="SecondaryTextColor">#8E8E93</Color>     <!-- Gray Text -->
+    <Color x:Key="PrimaryTextColorLight">White</Color>    <!-- Text on Primary Background -->
+    <Color x:Key="DangerTextColorLight">White</Color>     <!-- Text on Danger Background -->
+
+    <!-- Border Colors -->
+    <Color x:Key="BorderColor">#D1D1D6</Color>
+
+    <!-- You can add Dark Theme Colors using AppThemeBinding later if needed -->
+    <!-- Example:
+    <Color x:Key="AppBackgroundColor">White</Color>
+    <AppThemeBindingExtension x:Key="PageBackgroundColor" Light="{StaticResource LightPageBackground}" Dark="{StaticResource DarkPageBackground}"/>
+    -->
+
+</ResourceDictionary>

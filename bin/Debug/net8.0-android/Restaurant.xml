@@ -1,0 +1,519 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Restaurant</name>
+    </assembly>
+    <members>
+        <member name="M:Restaurant.Converters.IsNotNullConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The object value to check.</param>
+            <param name="targetType">The type of the binding target property.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>True if the value is not null, False otherwise.</returns>
+        </member>
+        <member name="M:Restaurant.Converters.IsNotNullConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value back. Not implemented.
+            </summary>
+        </member>
+        <member name="M:Restaurant.Converters.IsNullConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The object value to check.</param>
+            <param name="targetType">The type of the binding target property.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>True if the value is null, False otherwise.</returns>
+        </member>
+        <member name="M:Restaurant.Converters.IsNullConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value back. Not implemented.
+            </summary>
+        </member>
+        <member name="M:Restaurant.Converters.IsNullOrEmptyConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The string value to check.</param>
+            <param name="targetType">The type of the binding target property.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>False if the string is null or empty, True otherwise.</returns>
+        </member>
+        <member name="M:Restaurant.Converters.IsNullOrEmptyConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value back. Not implemented.
+            </summary>
+        </member>
+        <member name="T:Restaurant.Models.MenuItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.Models.MenuItem.Id">
+            <inheritdoc cref="F:Restaurant.Models.MenuItem.id"/>
+        </member>
+        <member name="P:Restaurant.Models.MenuItem.Name">
+            <inheritdoc cref="F:Restaurant.Models.MenuItem.name"/>
+        </member>
+        <member name="P:Restaurant.Models.MenuItem.Description">
+            <inheritdoc cref="F:Restaurant.Models.MenuItem.description"/>
+        </member>
+        <member name="P:Restaurant.Models.MenuItem.Price">
+            <inheritdoc cref="F:Restaurant.Models.MenuItem.price"/>
+        </member>
+        <member name="P:Restaurant.Models.MenuItem.Category">
+            <inheritdoc cref="F:Restaurant.Models.MenuItem.category"/>
+        </member>
+        <member name="P:Restaurant.Models.MenuItem.ImageUrl">
+            <inheritdoc cref="F:Restaurant.Models.MenuItem.imageUrl"/>
+        </member>
+        <member name="T:Restaurant.Models.Order">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.Models.Order.Id">
+            <inheritdoc cref="F:Restaurant.Models.Order.id"/>
+        </member>
+        <member name="P:Restaurant.Models.Order.OrderDate">
+            <inheritdoc cref="F:Restaurant.Models.Order.orderDate"/>
+        </member>
+        <member name="P:Restaurant.Models.Order.TotalAmount">
+            <inheritdoc cref="F:Restaurant.Models.Order.totalAmount"/>
+        </member>
+        <member name="P:Restaurant.Models.Order.UserId">
+            <inheritdoc cref="F:Restaurant.Models.Order.userId"/>
+        </member>
+        <member name="P:Restaurant.Models.Order.Status">
+            <inheritdoc cref="F:Restaurant.Models.Order.status"/>
+        </member>
+        <member name="P:Restaurant.Models.Order.PaymentId">
+            <inheritdoc cref="F:Restaurant.Models.Order.paymentId"/>
+        </member>
+        <member name="T:Restaurant.Models.Reservation">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.Id">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.id"/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.ReservationTime">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.reservationTime"/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.PartySize">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.partySize"/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.CustomerName">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.customerName"/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.CustomerPhone">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.customerPhone"/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.Status">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.status"/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.TableNumber">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.tableNumber"/>
+        </member>
+        <member name="P:Restaurant.Models.Reservation.UserId">
+            <inheritdoc cref="F:Restaurant.Models.Reservation.userId"/>
+        </member>
+        <member name="T:Restaurant.ViewModels.AppShellViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.AppShellViewModel.IsStaff">
+            <inheritdoc cref="F:Restaurant.ViewModels.AppShellViewModel.isStaff"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.AppShellViewModel.IsClient">
+            <inheritdoc cref="F:Restaurant.ViewModels.AppShellViewModel.isClient"/>
+        </member>
+        <member name="F:Restaurant.ViewModels.AppShellViewModel.goToProfileCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.AppShellViewModel.GoToProfileCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.AppShellViewModel.GoToProfileCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Restaurant.ViewModels.AppShellViewModel.GoToProfileAsync"/>.</summary>
+        </member>
+        <member name="F:Restaurant.ViewModels.AppShellViewModel.logoutCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.AppShellViewModel.LogoutCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.AppShellViewModel.LogoutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Restaurant.ViewModels.AppShellViewModel.LogoutAsync"/>.</summary>
+        </member>
+        <member name="T:Restaurant.ViewModels.BaseViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:Restaurant.ViewModels.BaseViewModel._isBusy"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.BaseViewModel.Title">
+            <inheritdoc cref="F:Restaurant.ViewModels.BaseViewModel._title"/>
+        </member>
+        <member name="T:Restaurant.ViewModels.CartViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.CartViewModel.ItemCount">
+            <inheritdoc cref="F:Restaurant.ViewModels.CartViewModel.itemCount"/>
+        </member>
+        <member name="F:Restaurant.ViewModels.CartViewModel.addItemCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.CartViewModel.AddItemCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.CartViewModel.AddItemCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:Restaurant.ViewModels.CartViewModel.AddItem(Restaurant.Models.MenuItem)"/>.</summary>
+        </member>
+        <member name="F:Restaurant.ViewModels.CartViewModel.removeItemCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.CartViewModel.RemoveItemCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.CartViewModel.RemoveItemCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:Restaurant.ViewModels.CartViewModel.RemoveItem(Restaurant.Models.CartItem)"/>.</summary>
+        </member>
+        <member name="F:Restaurant.ViewModels.CartViewModel.clearCartCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.CartViewModel.ClearCartCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.CartViewModel.ClearCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:Restaurant.ViewModels.CartViewModel.ClearCart"/>.</summary>
+        </member>
+        <member name="F:Restaurant.ViewModels.CartViewModel.placeOrderCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.CartViewModel.PlaceOrderCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.CartViewModel.PlaceOrderCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Restaurant.ViewModels.CartViewModel.PlaceOrderAsync"/>.</summary>
+        </member>
+        <member name="T:Restaurant.ViewModels.LoginViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.LoginViewModel.Username">
+            <inheritdoc cref="F:Restaurant.ViewModels.LoginViewModel.username"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.LoginViewModel.Password">
+            <inheritdoc cref="F:Restaurant.ViewModels.LoginViewModel.password"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.LoginViewModel.LoginError">
+            <inheritdoc cref="F:Restaurant.ViewModels.LoginViewModel.loginError"/>
+        </member>
+        <member name="T:Restaurant.ViewModels.ManageMenuViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ManageMenuViewModel.IsEditingOrAdding">
+            <inheritdoc cref="F:Restaurant.ViewModels.ManageMenuViewModel.isEditingOrAdding"/>
+        </member>
+        <member name="T:Restaurant.ViewModels.MenuViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:Restaurant.ViewModels.MenuViewModel.loadMenuItemsCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.MenuViewModel.LoadMenuItemsCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.MenuViewModel.LoadMenuItemsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Restaurant.ViewModels.MenuViewModel.LoadMenuItemsAsync"/>.</summary>
+        </member>
+        <member name="F:Restaurant.ViewModels.MenuViewModel.addToCartCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.MenuViewModel.AddToCartCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.MenuViewModel.AddToCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:Restaurant.ViewModels.MenuViewModel.AddToCart(Restaurant.Models.MenuItem)"/>.</summary>
+        </member>
+        <member name="F:Restaurant.ViewModels.MenuViewModel.goToCartCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.MenuViewModel.GoToCartCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.MenuViewModel.GoToCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Restaurant.ViewModels.MenuViewModel.GoToCartAsync"/>.</summary>
+        </member>
+        <member name="T:Restaurant.ViewModels.OrderViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.OrderViewModel.SelectedOrder">
+            <inheritdoc cref="F:Restaurant.ViewModels.OrderViewModel._selectedOrder"/>
+        </member>
+        <member name="F:Restaurant.ViewModels.OrderViewModel.loadOrdersCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.OrderViewModel.LoadOrdersCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.OrderViewModel.LoadOrdersCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:Restaurant.ViewModels.OrderViewModel.LoadOrdersAsync"/>.</summary>
+        </member>
+        <member name="F:Restaurant.ViewModels.OrderViewModel.viewOrderDetailsCommand">
+            <summary>The backing field for <see cref="P:Restaurant.ViewModels.OrderViewModel.ViewOrderDetailsCommand"/>.</summary>
+        </member>
+        <member name="P:Restaurant.ViewModels.OrderViewModel.ViewOrderDetailsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:Restaurant.ViewModels.OrderViewModel.ViewOrderDetails(Restaurant.Models.Order)"/>.</summary>
+        </member>
+        <member name="T:Restaurant.ViewModels.ProfileViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ProfileViewModel.CurrentUser">
+            <inheritdoc cref="F:Restaurant.ViewModels.ProfileViewModel.currentUser"/>
+        </member>
+        <member name="T:Restaurant.ViewModels.ReservationViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ReservationViewModel.ReservationDate">
+            <inheritdoc cref="F:Restaurant.ViewModels.ReservationViewModel.reservationDate"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ReservationViewModel.ReservationTime">
+            <inheritdoc cref="F:Restaurant.ViewModels.ReservationViewModel.reservationTime"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ReservationViewModel.PartySize">
+            <inheritdoc cref="F:Restaurant.ViewModels.ReservationViewModel.partySize"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ReservationViewModel.CustomerName">
+            <inheritdoc cref="F:Restaurant.ViewModels.ReservationViewModel.customerName"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ReservationViewModel.CustomerPhone">
+            <inheritdoc cref="F:Restaurant.ViewModels.ReservationViewModel.customerPhone"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ReservationViewModel.CustomerEmail">
+            <inheritdoc cref="F:Restaurant.ViewModels.ReservationViewModel.customerEmail"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.ReservationViewModel.SpecialRequests">
+            <inheritdoc cref="F:Restaurant.ViewModels.ReservationViewModel.specialRequests"/>
+        </member>
+        <member name="T:Restaurant.ViewModels.StatsViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:Restaurant.ViewModels.StatsViewModel.TotalClients">
+            <inheritdoc cref="F:Restaurant.ViewModels.StatsViewModel.totalClients"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.StatsViewModel.TotalRevenue">
+            <inheritdoc cref="F:Restaurant.ViewModels.StatsViewModel.totalRevenue"/>
+        </member>
+        <member name="P:Restaurant.ViewModels.StatsViewModel.PendingReservations">
+            <inheritdoc cref="F:Restaurant.ViewModels.StatsViewModel.pendingReservations"/>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Price">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Price" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Category">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Category" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImageUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImageUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OrderDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OrderDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UserId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UserId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Status">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Status" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PaymentId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PaymentId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ReservationTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ReservationTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PartySize">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PartySize" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CustomerName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CustomerName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CustomerPhone">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CustomerPhone" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TableNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TableNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsStaff">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsStaff" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsClient">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsClient" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsNotBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsNotBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ItemCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ItemCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CartTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CartTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LoginError">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LoginError" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsEditingOrAdding">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsEditingOrAdding" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsNotEditingOrAdding">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsNotEditingOrAdding" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedOrder">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedOrder" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentUser">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentUser" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ReservationDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ReservationDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CustomerEmail">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CustomerEmail" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SpecialRequests">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SpecialRequests" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalClients">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalClients" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalRevenue">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalRevenue" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PendingReservations">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PendingReservations" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Price">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Price" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Category">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Category" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImageUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImageUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OrderDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OrderDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UserId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UserId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Status">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Status" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PaymentId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PaymentId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ReservationTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ReservationTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PartySize">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PartySize" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CustomerName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CustomerName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CustomerPhone">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CustomerPhone" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TableNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TableNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsStaff">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsStaff" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsClient">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsClient" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ItemCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ItemCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CartTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CartTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LoginError">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LoginError" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsEditingOrAdding">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsEditingOrAdding" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotEditingOrAdding">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotEditingOrAdding" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedOrder">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedOrder" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentUser">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentUser" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ReservationDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ReservationDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CustomerEmail">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CustomerEmail" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SpecialRequests">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SpecialRequests" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalClients">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalClients" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalRevenue">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalRevenue" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PendingReservations">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PendingReservations" generated properties.</summary>
+        </member>
+    </members>
+</doc>

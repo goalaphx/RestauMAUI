@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:model="clr-namespace:Restaurant.Models"
+             x:Class="Restaurant.Views.MenuPage"
+             x:DataType="viewmodel:MenuViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+     <ContentPage.Resources>
+         <ResourceDictionary>
+             <!-- Add Styles specific to this page or reuse common ones -->
+            <Style x:Key="PageTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,10,0,15" />
+            </Style>
+
+             <Style x:Key="MenuItemBorderStyle" TargetType="Border" BasedOn="{StaticResource ListItemBorderStyle}">
+                 <!-- Inherit common list item style, maybe add specific margin -->
+                 <Setter Property="Margin" Value="10,0,10,10"/>
+             </Style>
+
+              <Style x:Key="MenuItemNameStyle" TargetType="Label" BasedOn="{StaticResource PrimaryInfoStyle}">
+                 <Setter Property="FontSize" Value="Medium"/>
+             </Style>
+              <Style x:Key="MenuItemDescriptionStyle" TargetType="Label" BasedOn="{StaticResource SecondaryInfoStyle}"/>
+              <Style x:Key="MenuItemPriceStyle" TargetType="Label" BasedOn="{StaticResource TotalAmountStyle}">
+                 <Setter Property="FontAttributes" Value="Bold"/> <!-- Ensure price stands out -->
+             </Style>
+
+             <Style x:Key="AddToCartButtonStyle" TargetType="Button">
+                <Setter Property="Text" Value="+"/> <!-- Use text or FontImageSource -->
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="WidthRequest" Value="44"/>
+                <Setter Property="HeightRequest" Value="44"/>
+                <Setter Property="CornerRadius" Value="22"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0"/>
+             </Style>
+
+             <Style x:Key="FloatingActionButtonStyle" TargetType="Button">
+                <Setter Property="Text" Value="🛒"/> <!-- Emoji or FontImageSource -->
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" /> <!-- Use Accent color for FAB -->
+                <Setter Property="CornerRadius" Value="28" />
+                <Setter Property="HeightRequest" Value="56" />
+                <Setter Property="WidthRequest" Value="56" />
+                <Setter Property="Margin" Value="0,0,20,20" /> <!-- Standard FAB margin -->
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="Shadow">
+                     <Shadow Brush="Black" Offset="5,5" Radius="10" Opacity="0.6" />
+                </Setter>
+             </Style>
+
+             <!-- Optional: Style for Image -->
+             <Style x:Key="MenuItemImageStyle" TargetType="Image">
+                 <Setter Property="Aspect" Value="AspectFill"/>
+                 <Setter Property="WidthRequest" Value="70"/>
+                 <Setter Property="HeightRequest" Value="70"/>
+                 <Setter Property="VerticalOptions" Value="Center"/>
+                 <Setter Property="Margin" Value="0,0,10,0"/>
+                 <!-- Add Clip for rounded corners if desired -->
+                 <!-- <Setter Property="Clip" Value="EllipseGeometry Center='35,35' RadiusX='35' RadiusY='35'"/> -->
+             </Style>
+
+         </ResourceDictionary>
+     </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" RowSpacing="0">
+        <Label Text="Our Menu" Style="{StaticResource PageTitleStyle}" Grid.Row="0" SemanticProperties.HeadingLevel="Level1"/>
+
+        <RefreshView Grid.Row="1" Command="{Binding LoadMenuItemsCommand}" IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding MenuItems}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:MenuItem">
+                         <Border Style="{StaticResource MenuItemBorderStyle}">
+                           <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="10"> <!-- Adjusted grid columns -->
+                                <!-- Optional Image - Uncomment and ensure ImageUrl has value -->
+                                <Image Source="{Binding ImageUrl}" Grid.Column="0" Style="{StaticResource MenuItemImageStyle}">
+                                    <!-- Add trigger to hide if ImageUrl is null/empty -->
+                                    <Image.Triggers>
+                                         <DataTrigger TargetType="Image" Binding="{Binding ImageUrl}" Value="{x:Null}">
+                                             <Setter Property="IsVisible" Value="False"/>
+                                         </DataTrigger>
+                                          <DataTrigger TargetType="Image" Binding="{Binding ImageUrl.Length}" Value="0">
+                                             <Setter Property="IsVisible" Value="False"/>
+                                         </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="{Binding Name}" Style="{StaticResource MenuItemNameStyle}"/>
+                                    <Label Text="{Binding Description}" Style="{StaticResource MenuItemDescriptionStyle}"/>
+                                    <Label Text="{Binding Price, StringFormat='{0:C}'}" Style="{StaticResource MenuItemPriceStyle}"/>
+                                </VerticalStackLayout>
+
+                                <Button Grid.Column="2"
+                                        Style="{StaticResource AddToCartButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MenuViewModel}}, Path=AddToCartCommand}"
+                                        CommandParameter="{Binding .}"/>
+                           </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label Text="Menu is currently empty." Style="{StaticResource EmptyListLabelStyle}"/>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+
+        
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"
+                           Color="{StaticResource PrimaryColor}"/>
+    </Grid>
+</ContentPage>

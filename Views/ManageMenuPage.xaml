@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:model="clr-namespace:Restaurant.Models"
+             xmlns:converters="clr-namespace:Restaurant.Converters"
+             x:Class="Restaurant.Views.ManageMenuPage"
+             x:DataType="viewmodel:ManageMenuViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+         <ResourceDictionary>
+             <converters:NegateBooleanConverter x:Key="NegateBooleanConverter" />
+             <converters:IsGreaterThanZeroConverter x:Key="IsGreaterThanZeroConverter" />
+             <converters:IsZeroConverter x:Key="IsZeroConverter" />
+
+            <!-- Styles for this page -->
+             <Style x:Key="PageHeaderStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+            </Style>
+
+            <Style x:Key="AddItemButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+                <Setter Property="Padding" Value="20,0"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+             <Style x:Key="EditButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="WidthRequest" Value="60"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="5,0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+             </Style>
+
+             <Style x:Key="DeleteButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="{StaticResource DangerColor}"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="BorderColor" Value="{StaticResource DangerColor}"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="WidthRequest" Value="60"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+             </Style>
+
+             <!-- Inherited styles from Login Page or define centrally -->
+             <Style x:Key="FormEntryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="HeightRequest" Value="45" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,0,0,5" />
+            </Style>
+             <Style x:Key="FormEditorStyle" TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="HeightRequest" Value="80" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,0,0,5" />
+            </Style>
+             <Style x:Key="FormPickerStyle" TargetType="Picker">
+                 <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                 <Setter Property="TitleColor" Value="{StaticResource SecondaryTextColor}" />
+                 <Setter Property="HeightRequest" Value="45" />
+                 <Setter Property="FontSize" Value="Small" />
+                 <Setter Property="Margin" Value="0,0,0,5" />
+             </Style>
+
+              <Style x:Key="FormSectionBorderStyle" TargetType="Border">
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Stroke" Value="{StaticResource BorderColor}" />
+                <Setter Property="StrokeThickness" Value="1"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 10"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                 <Setter Property="Shadow">
+                    <Shadow Brush="#BBBBBB" Offset="0,5" Radius="15" Opacity="0.3" />
+                </Setter>
+            </Style>
+
+             <Style x:Key="FormTitleStyle" TargetType="Label">
+                 <Setter Property="FontAttributes" Value="Bold"/>
+                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                 <Setter Property="FontSize" Value="Medium"/>
+                 <Setter Property="Margin" Value="0,0,0,10"/>
+             </Style>
+
+              <Style x:Key="SaveButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryActionButtonStyle}">
+                 <Setter Property="Margin" Value="0"/>
+                 <Setter Property="HeightRequest" Value="45"/>
+                 <Setter Property="CornerRadius" Value="23"/>
+             </Style>
+             <Style x:Key="CancelButtonStyle" TargetType="Button" BasedOn="{StaticResource SaveButtonStyle}">
+                 <Setter Property="BackgroundColor" Value="{StaticResource SecondaryTextColor}"/>
+                 <Setter Property="TextColor" Value="White"/>
+             </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" Padding="0" RowSpacing="0"> <!-- Remove Grid padding -->
+
+        <!-- Header Section -->
+        <Grid Grid.Row="0" Padding="15,10" ColumnDefinitions="*, Auto" BackgroundColor="{StaticResource ItemBackgroundColor}">
+             <Label Text="Manage Menu Items"
+                    Style="{StaticResource PageHeaderStyle}" Grid.Column="0" SemanticProperties.HeadingLevel="Level1"/>
+            <Button Text="Add Item" Grid.Column="1"
+                    Style="{StaticResource AddItemButtonStyle}"
+                    Command="{Binding AddNewItemCommand}"
+                    IsEnabled="{Binding IsNotEditingOrAdding}"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"/>
+        </Grid>
+
+        <!-- List Section (Visible when not editing) -->
+        <RefreshView Grid.Row="1"
+                     Command="{Binding LoadItemsCommand}"
+                     IsRefreshing="{Binding IsBusy}"
+                     IsEnabled="{Binding IsNotEditingOrAdding}">
+            <CollectionView ItemsSource="{Binding MenuItems}"
+                            SelectionMode="None"
+                            IsVisible="{Binding IsNotEditingOrAdding}"> <!-- Use IsVisible here -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:MenuItem">
+                        <!-- Use Border for better styling -->
+                        <Border Style="{StaticResource ListItemBorderStyle}">
+                            <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="5">
+                                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                    <Label Text="{Binding Name}" Style="{StaticResource PrimaryInfoStyle}"/>
+                                    <Label Text="{Binding Description}" Style="{StaticResource SecondaryInfoStyle}"/>
+                                    <Label Text="{Binding Category}" Style="{StaticResource SecondaryInfoStyle}" FontSize="10"/>
+                                    <Label Text="{Binding Price, StringFormat='{0:C}'}" Style="{StaticResource TotalAmountStyle}"/>
+                                </VerticalStackLayout>
+                                <Button Grid.Column="1" Text="Edit" Style="{StaticResource EditButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManageMenuViewModel}}, Path=BeginEditItemCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                <Button Grid.Column="2" Text="Delete" Style="{StaticResource DeleteButtonStyle}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManageMenuViewModel}}, Path=DeleteItemCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                 <CollectionView.EmptyView>
+                    <Label Text="No menu items found. Click 'Add Item' above." Style="{StaticResource EmptyListLabelStyle}"/>
+                 </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+
+         <!-- Edit/Add Section (Visible when editing/adding) -->
+         <Border Grid.Row="1"
+                 Style="{StaticResource FormSectionBorderStyle}"
+                 IsVisible="{Binding IsEditingOrAdding}">
+            <ScrollView>
+                <VerticalStackLayout Spacing="8"
+                                     BindingContext="{Binding EditableMenuItem}"
+                                     x:DataType="model:MenuItem">
+
+                     <Label Text="{Binding Id, StringFormat='Editing Item #{0}'}" IsVisible="{Binding Id, Converter={StaticResource IsGreaterThanZeroConverter}}" Style="{StaticResource FormTitleStyle}"/>
+                     <Label Text="Adding New Item" IsVisible="{Binding Id, Converter={StaticResource IsZeroConverter}}" Style="{StaticResource FormTitleStyle}"/>
+
+                     <Entry Placeholder="Item Name" Text="{Binding Name}" Style="{StaticResource FormEntryStyle}" />
+                     <Editor Placeholder="Description" Text="{Binding Description}" Style="{StaticResource FormEditorStyle}"/>
+                     <Picker Title="Category" Style="{StaticResource FormPickerStyle}"
+                             ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManageMenuViewModel}}, Path=CategoryOptions}"
+                             SelectedItem="{Binding Category}"/>
+                     <Entry Placeholder="Price" Text="{Binding Price}" Keyboard="Numeric" Style="{StaticResource FormEntryStyle}"/>
+                     <Entry Placeholder="Image URL (optional)" Text="{Binding ImageUrl}" Style="{StaticResource FormEntryStyle}"/>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,15,0,0">
+                          <Button Grid.Column="0" Text="Save" Style="{StaticResource SaveButtonStyle}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManageMenuViewModel}}, Path=SaveItemCommand}" IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManageMenuViewModel}}, Path=IsNotBusy}"/>
+                          <Button Grid.Column="1" Text="Cancel" Style="{StaticResource CancelButtonStyle}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManageMenuViewModel}}, Path=CancelEditCommand}" IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManageMenuViewModel}}, Path=IsNotBusy}"/>
+                    </Grid>
+                 </VerticalStackLayout>
+             </ScrollView>
+         </Border>
+
+        <ActivityIndicator Grid.Row="1"
+                           IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" VerticalOptions="Center"
+                           Color="{StaticResource PrimaryColor}"/>
+
+    </Grid>
+</ContentPage>

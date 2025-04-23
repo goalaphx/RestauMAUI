@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             x:Class="Restaurant.Views.ReservationPage"
+             x:DataType="viewmodel:ReservationViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <!-- Removed ContentPage.Resources as styles are now global -->
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="20">
+
+            <Label Text="Reserve Your Table" Style="{StaticResource FormPageTitleStyle}" SemanticProperties.HeadingLevel="Level1"/>
+
+            <!-- Date -->
+            <Label Text="Date:" Style="{StaticResource FormLabelStyle}"/>
+            <Border Padding="0" BackgroundColor="{StaticResource ItemBackgroundColor}" Stroke="{StaticResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5" Margin="0,0,0,5">
+                <DatePicker Date="{Binding ReservationDate}" MinimumDate="{x:Static system:DateTime.Today}"
+                            BackgroundColor="Transparent"
+                            HeightRequest="45" FontSize="Small" TextColor="{StaticResource TextColor}"
+                            Margin="5,0"/>
+            </Border>
+
+            <!-- Time -->
+            <Label Text="Time:" Style="{StaticResource FormLabelStyle}"/>
+            <Border Padding="0" BackgroundColor="{StaticResource ItemBackgroundColor}" Stroke="{StaticResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5" Margin="0,0,0,5">
+                <TimePicker Time="{Binding ReservationTime}" Format="t"
+                            BackgroundColor="Transparent"
+                            HeightRequest="45" FontSize="Small" TextColor="{StaticResource TextColor}"
+                            Margin="5,0"/>
+            </Border>
+
+            <!-- Party Size -->
+            <Label Text="Party Size:" Style="{StaticResource FormLabelStyle}"/>
+             <HorizontalStackLayout Spacing="10" VerticalOptions="Center" Margin="0,0,0,5">
+                <Stepper Value="{Binding PartySize}" Minimum="1" Maximum="12" Increment="1"/>
+                <Label Text="{Binding PartySize}" Style="{StaticResource StepperValueLabelStyle}"/>
+             </HorizontalStackLayout>
+
+            <!-- Name -->
+            <Label Text="Name:" Style="{StaticResource FormLabelStyle}"/>
+            <Border Padding="0" BackgroundColor="{StaticResource ItemBackgroundColor}" Stroke="{StaticResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5" Margin="0,0,0,5">
+                <Entry Text="{Binding CustomerName}" Placeholder="Your Name"
+                       BackgroundColor="Transparent"
+                       HeightRequest="45" FontSize="Small" TextColor="{StaticResource TextColor}" PlaceholderColor="{StaticResource SecondaryTextColor}"
+                       Margin="5,0"/>
+            </Border>
+
+            <!-- Phone -->
+            <Label Text="Phone:" Style="{StaticResource FormLabelStyle}"/>
+            <Border Padding="0" BackgroundColor="{StaticResource ItemBackgroundColor}" Stroke="{StaticResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5" Margin="0,0,0,5">
+                <Entry Text="{Binding CustomerPhone}" Placeholder="Contact Number" Keyboard="Telephone"
+                       BackgroundColor="Transparent"
+                       HeightRequest="45" FontSize="Small" TextColor="{StaticResource TextColor}" PlaceholderColor="{StaticResource SecondaryTextColor}"
+                       Margin="5,0"/>
+            </Border>
+
+            <!-- Special Requests -->
+            <Label Text="Requests (Optional):" Style="{StaticResource FormLabelStyle}"/>
+            <Border Padding="5" BackgroundColor="{StaticResource ItemBackgroundColor}" Stroke="{StaticResource BorderColor}" StrokeThickness="1" StrokeShape="RoundRectangle 5" Margin="0,0,0,5">
+                <Editor Text="{Binding SpecialRequests}" Placeholder="Any special requests?"
+                        BackgroundColor="Transparent"
+                        HeightRequest="100" FontSize="Small" TextColor="{StaticResource TextColor}" PlaceholderColor="{StaticResource SecondaryTextColor}"
+                        AutoSize="Disabled"/>
+                        <!-- No inner margin needed for Editor usually due to its nature -->
+            </Border>
+
+            <!-- Submit Button -->
+            <Button Text="Submit Request"
+                    Style="{StaticResource PrimaryActionButtonStyle}" 
+                    Command="{Binding SubmitReservationCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Margin="0,20,0,0"/> <!-- Adjusted top margin -->
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="Center" VerticalOptions="Center"
+                               Margin="0,15,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Restaurant.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Restaurant.Views"
+    xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Restaurant App"
+    x:DataType="viewmodel:AppShellViewModel">
+
+    <Shell.FlyoutHeader>
+         <Border HeightRequest="120" BackgroundColor="DarkCyan" Padding="10">
+              <Label Text="My Restaurant" TextColor="White" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+         </Border>
+    </Shell.FlyoutHeader>
+
+    <!-- Restore IsVisible bindings -->
+    <FlyoutItem Title="Menu" Icon="dotnet_bot.png" IsVisible="{Binding IsClient}">
+         <ShellContent Title="Menu" ContentTemplate="{DataTemplate local:MenuPage}" Route="MenuPage"/>
+    </FlyoutItem>
+    <FlyoutItem Title="My Cart" Icon="dotnet_bot.png" IsVisible="{Binding IsClient}">
+         <ShellContent Title="Cart" ContentTemplate="{DataTemplate local:CartPage}" Route="CartPage"/>
+    </FlyoutItem>
+    <FlyoutItem Title="My Orders" Icon="dotnet_bot.png" IsVisible="{Binding IsClient}">
+         <ShellContent Title="Orders" ContentTemplate="{DataTemplate local:OrderPage}" Route="OrderPage"/>
+    </FlyoutItem>
+     <FlyoutItem Title="My Reservations" Icon="dotnet_bot.png" IsVisible="{Binding IsClient}">
+         <ShellContent Title="Reservations" ContentTemplate="{DataTemplate local:MyReservationsPage}" Route="MyReservationsPage"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Reserve Table" Icon="dotnet_bot.png" IsVisible="{Binding IsClient}">
+         <ShellContent Title="Reservation" ContentTemplate="{DataTemplate local:ReservationPage}" Route="ReservationPage"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Statistics" Icon="dotnet_bot.png" IsVisible="{Binding IsStaff}">
+         <ShellContent Title="Stats" ContentTemplate="{DataTemplate local:StatsPage}" Route="StatsPage"/>
+    </FlyoutItem>
+     <FlyoutItem Title="All Orders" Icon="dotnet_bot.png" IsVisible="{Binding IsStaff}">
+         <ShellContent Title="All Orders" ContentTemplate="{DataTemplate local:AllOrdersPage}" Route="AllOrdersPage"/>
+    </FlyoutItem>
+     <FlyoutItem Title="All Reservations" Icon="dotnet_bot.png" IsVisible="{Binding IsStaff}">
+         <ShellContent Title="All Reservations" ContentTemplate="{DataTemplate local:AllReservationsPage}" Route="AllReservationsPage"/>
+    </FlyoutItem>
+     <FlyoutItem Title="Manage Menu" Icon="dotnet_bot.png" IsVisible="{Binding IsStaff}">
+         <ShellContent Title="Manage Menu" ContentTemplate="{DataTemplate local:ManageMenuPage}" Route="ManageMenuPage"/>
+    </FlyoutItem>
+    <!-- End Restore IsVisible bindings -->
+
+    <MenuItem Text="My Profile" IconImageSource="dotnet_bot.png" Command="{Binding GoToProfileCommand}"/>
+    <MenuItem Text="Logout" IconImageSource="dotnet_bot.png" Command="{Binding LogoutCommand}"/>
+
+</Shell>

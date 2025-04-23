@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:model="clr-namespace:Restaurant.Models"
+             x:Class="Restaurant.Views.AllReservationsPage"
+             x:DataType="viewmodel:AllReservationsViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <!-- Define Colors (Ideally move these to App.xaml) -->
+        <Color x:Key="PrimaryColor">#007AFF</Color>
+        <Color x:Key="AccentColor">#FF9500</Color>
+        <Color x:Key="PageBackgroundColor">#F2F2F7</Color>
+        <Color x:Key="ItemBackgroundColor">White</Color>
+        <Color x:Key="TextColor">#1C1C1E</Color>
+        <Color x:Key="SecondaryTextColor">#8E8E93</Color>
+        <Color x:Key="BorderColor">#D1D1D6</Color>
+
+        <!-- Define Styles (Reusing styles where applicable) -->
+        <Style x:Key="PageTitleStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,10,0,15" />
+        </Style>
+
+        <Style x:Key="ListItemBorderStyle" TargetType="Border">
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="Margin" Value="10,0,10,10" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+            <Setter Property="Stroke" Value="{StaticResource BorderColor}" />
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}"/>
+             <Setter Property="Shadow">
+                <Shadow Brush="#DDDDDD" Offset="5,5" Radius="10" Opacity="0.5" />
+            </Setter>
+        </Style>
+
+         <Style x:Key="PrimaryInfoStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+
+         <Style x:Key="SecondaryInfoStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
+            <Setter Property="FontSize" Value="Small"/>
+        </Style>
+
+         <Style x:Key="StatusLabelStyle" TargetType="Label">
+             <Setter Property="FontSize" Value="Small"/>
+             <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+         </Style>
+
+         <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="15,0"/>
+        </Style>
+
+         <Style x:Key="EmptyListLabelStyle" TargetType="Label">
+             <Setter Property="HorizontalOptions" Value="Center"/>
+             <Setter Property="VerticalOptions" Value="Center"/>
+             <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+             <Setter Property="Margin" Value="20"/>
+         </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" RowSpacing="0">
+        <Label Text="All Customer Reservations" Style="{StaticResource PageTitleStyle}" Grid.Row="0" SemanticProperties.HeadingLevel="Level1"/>
+
+        <RefreshView Grid.Row="1" Command="{Binding LoadReservationsCommand}" IsRefreshing="{Binding IsBusy}">
+             <CollectionView ItemsSource="{Binding Reservations}" SelectionMode="None">
+                 <CollectionView.ItemTemplate>
+                     <DataTemplate x:DataType="model:Reservation">
+                         <Border Style="{StaticResource ListItemBorderStyle}">
+                            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                                 <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                     <Label Text="{Binding CustomerName}" Style="{StaticResource PrimaryInfoStyle}"/>
+                                     <Label Text="{Binding ReservationTime, StringFormat='{0:g}'}" Style="{StaticResource SecondaryInfoStyle}" />
+                                     <Label Text="{Binding PartySize, StringFormat='Party of {0}'}" Style="{StaticResource SecondaryInfoStyle}"/>
+                                     <Label Text="{Binding CustomerPhone, StringFormat='Phone: {0}'}" Style="{StaticResource SecondaryInfoStyle}"/>
+                                     <Label Text="{Binding Status}" Style="{StaticResource StatusLabelStyle}"/>
+                                 </VerticalStackLayout>
+
+                                 <Button Grid.Column="1"
+                                         Text="Update Status"
+                                         Style="{StaticResource ActionButtonStyle}"
+                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AllReservationsViewModel}}, Path=ChangeReservationStatusCommand}"
+                                         CommandParameter="{Binding .}" />
+                            </Grid>
+                         </Border>
+                     </DataTemplate>
+                 </CollectionView.ItemTemplate>
+                   <CollectionView.EmptyView>
+                        <Label Text="No reservations found." Style="{StaticResource EmptyListLabelStyle}"/>
+                   </CollectionView.EmptyView>
+             </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Color="{StaticResource PrimaryColor}"/>
+    </Grid>
+</ContentPage>

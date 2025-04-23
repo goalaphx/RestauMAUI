@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Restaurant.ViewModels"
+             xmlns:converters="clr-namespace:Restaurant.Converters"
+             x:Class="Restaurant.Views.ProfilePage"
+             x:DataType="viewmodel:ProfileViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+         <ResourceDictionary>
+             <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
+             <converters:IsNullConverter x:Key="IsNullConverter" />
+
+             <!-- Styles for Profile Page -->
+              <Style x:Key="ProfileTitleStyle" TargetType="Label" BasedOn="{StaticResource PageTitleStyle}">
+                 <Setter Property="Margin" Value="0,20,0,20"/> <!-- Adjust margin -->
+             </Style>
+
+             <Style x:Key="ProfileSectionBorderStyle" TargetType="Border">
+                 <Setter Property="Padding" Value="20"/>
+                 <Setter Property="Margin" Value="10,0"/>
+                 <Setter Property="Stroke" Value="{StaticResource BorderColor}"/>
+                 <Setter Property="StrokeThickness" Value="1"/>
+                 <Setter Property="StrokeShape" Value="RoundRectangle 10"/>
+                 <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}"/>
+                  <Setter Property="Shadow">
+                     <Shadow Brush="#DDDDDD" Offset="5,5" Radius="10" Opacity="0.3" />
+                 </Setter>
+             </Style>
+
+             <Style x:Key="ProfileInfoLabelStyle" TargetType="Label">
+                 <Setter Property="FontSize" Value="Medium"/>
+                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                 <Setter Property="Margin" Value="0,0,0,5"/>
+             </Style>
+
+             <Style x:Key="ProfileInfoBoldSpanStyle" TargetType="Span">
+                  <Setter Property="FontAttributes" Value="Bold"/>
+                  <Setter Property="TextColor" Value="{StaticResource TextColor}"/> <!-- Ensure consistency -->
+             </Style>
+              <Style x:Key="ProfileInfoValueSpanStyle" TargetType="Span">
+                   <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+             </Style>
+
+             <Style x:Key="ErrorLabelStyle" TargetType="Label">
+                 <Setter Property="TextColor" Value="{StaticResource DangerColor}" />
+                 <Setter Property="HorizontalOptions" Value="Center" />
+                 <Setter Property="Margin" Value="0,15,0,15" />
+                 <Setter Property="FontSize" Value="Small"/>
+             </Style>
+
+             <Style x:Key="LogoutButtonStyle" TargetType="Button">
+                 <Setter Property="BackgroundColor" Value="{StaticResource DangerColor}" />
+                 <Setter Property="TextColor" Value="White"/>
+                 <Setter Property="FontAttributes" Value="Bold"/>
+                 <Setter Property="HeightRequest" Value="50"/>
+                 <Setter Property="CornerRadius" Value="25"/>
+                 <Setter Property="FontSize" Value="Medium"/>
+                 <Setter Property="Margin" Value="15,30,15,15"/> <!-- Add more top margin -->
+                 <Setter Property="VerticalOptions" Value="End"/> <!-- Pushes to bottom -->
+                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+             </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Use ScrollView in case content grows -->
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, Auto, *" Padding="10" RowSpacing="15">
+
+             <Label Grid.Row="0" Text="My Profile" Style="{StaticResource ProfileTitleStyle}" SemanticProperties.HeadingLevel="Level1"/>
+
+             <!-- Activity Indicator (only visible during load) -->
+             <ActivityIndicator Grid.Row="1"
+                                IsRunning="{Binding IsBusy}"
+                                IsVisible="{Binding IsBusy}"
+                                HorizontalOptions="Center"
+                                Color="{StaticResource PrimaryColor}"/>
+
+             <!-- Content visible only AFTER CurrentUser is loaded and IF NOT Busy -->
+             <Border Grid.Row="2" Style="{StaticResource ProfileSectionBorderStyle}"
+                     IsVisible="{Binding CurrentUser, Converter={StaticResource IsNotNullConverter}}">
+                 <VerticalStackLayout Spacing="15"> <!-- Increased spacing -->
+                    <Label Style="{StaticResource ProfileInfoLabelStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Name: " Style="{StaticResource ProfileInfoBoldSpanStyle}"/>
+                                <Span Text="{Binding CurrentUser.FullName}" Style="{StaticResource ProfileInfoValueSpanStyle}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                     <Label Style="{StaticResource ProfileInfoLabelStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Username: " Style="{StaticResource ProfileInfoBoldSpanStyle}"/>
+                                <Span Text="{Binding CurrentUser.Username}" Style="{StaticResource ProfileInfoValueSpanStyle}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                     <Label Style="{StaticResource ProfileInfoLabelStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Role: " Style="{StaticResource ProfileInfoBoldSpanStyle}"/>
+                                <Span Text="{Binding CurrentUser.Role}" Style="{StaticResource ProfileInfoValueSpanStyle}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                     <!-- Add other profile fields here -->
+                </VerticalStackLayout>
+             </Border>
+
+             <!-- Error Message (visible if user is null AND not busy loading) -->
+             <Label Grid.Row="2" Text="Could not load profile details." Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding CurrentUser, Converter={StaticResource IsNullConverter}, FallbackValue=False}"
+                    HorizontalOptions="Center" />
+
+             <!-- Logout Button (always occupies the last row space) -->
+            <Button Grid.Row="3" Text="Logout"
+                    Style="{StaticResource LogoutButtonStyle}"
+                    Command="{Binding LogoutCommand}"
+                    IsEnabled="{Binding IsNotBusy}"/>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
